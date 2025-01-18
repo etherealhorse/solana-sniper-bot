@@ -8,19 +8,19 @@ export class RenouncedFreezeFilter implements Filter {
   private readonly errorMessage: string[] = [];
   private cachedResult: FilterResult | undefined = undefined;
 
-  constructor(
-    private readonly connection: Connection,
-    private readonly checkRenounced: boolean,
-    private readonly checkFreezable: boolean,
-  ) {
-    if (this.checkRenounced) {
-      this.errorMessage.push('mint');
-    }
+  // constructor(
+  //   private readonly connection: Connection,
+  //   private readonly checkRenounced: boolean,
+  //   private readonly checkFreezable: boolean,
+  // ) {
+  //   if (this.checkRenounced) {
+  //     this.errorMessage.push('mint');
+  //   }
 
-    if (this.checkFreezable) {
-      this.errorMessage.push('freeze');
-    }
-  }
+  //   if (this.checkFreezable) {
+  //     this.errorMessage.push('freeze');
+  //   }
+  // }
 
   async execute(poolKeys: LiquidityPoolKeysV4): Promise<FilterResult> {
     if (this.cachedResult) {

@@ -13,23 +13,23 @@ export class BurnFilter implements Filter {
       return this.cachedResult;
     }
 
-    try {
-      const amount = await this.connection.getTokenSupply(poolKeys.lpMint, this.connection.commitment);
-      const burned = amount.value.uiAmount === 0;
-      const result = { ok: burned, message: burned ? undefined : "Burned -> Creator didn't burn LP" };
+    // try {
+    //   const amount = await this.connection.getTokenSupply(poolKeys.lpMint, this.connection.commitment);
+    //   const burned = amount.value.uiAmount === 0;
+    //   const result = { ok: burned, message: burned ? undefined : "Burned -> Creator didn't burn LP" };
 
-      if (result.ok) {
-        this.cachedResult = result;
-      }
+    //   if (result.ok) {
+    //     this.cachedResult = result;
+    //   }
 
-      return result;
-    } catch (e: any) {
-      if (e.code == -32602) {
-        return { ok: true };
-      }
+    //   return result;
+    // } catch (e: any) {
+    //   if (e.code == -32602) {
+    //     return { ok: true };
+    //   }
 
-      logger.error({ mint: poolKeys.baseMint }, `Failed to check if LP is burned`);
-    }
+    //   logger.error({ mint: poolKeys.baseMint }, `Failed to check if LP is burned`);
+    // }
 
     return { ok: false, message: 'Failed to check if LP is burned' };
   }

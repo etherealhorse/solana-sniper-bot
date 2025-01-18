@@ -10,20 +10,20 @@ export class MutableFilter implements Filter {
   private readonly errorMessage: string[] = [];
   private cachedResult: FilterResult | undefined = undefined;
 
-  constructor(
-    private readonly connection: Connection,
-    private readonly metadataSerializer: Serializer<MetadataAccountDataArgs, MetadataAccountData>,
-    private readonly checkMutable: boolean,
-    private readonly checkSocials: boolean,
-  ) {
-    if (this.checkMutable) {
-      this.errorMessage.push('mutable');
-    }
+  // constructor(
+  //   private readonly connection: Connection,
+  //   private readonly metadataSerializer: Serializer<MetadataAccountDataArgs, MetadataAccountData>,
+  //   private readonly checkMutable: boolean,
+  //   private readonly checkSocials: boolean,
+  // ) {
+  //   if (this.checkMutable) {
+  //     this.errorMessage.push('mutable');
+  //   }
 
-    if (this.checkSocials) {
-      this.errorMessage.push('socials');
-    }
-  }
+  //   if (this.checkSocials) {
+  //     this.errorMessage.push('socials');
+  //   }
+  // }
 
   async execute(poolKeys: LiquidityPoolKeysV4): Promise<FilterResult> {
     if (this.cachedResult) {

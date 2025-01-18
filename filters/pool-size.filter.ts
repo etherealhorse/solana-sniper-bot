@@ -17,13 +17,13 @@ export class PoolSizeFilter implements Filter {
       const poolSize = new TokenAmount(this.quoteToken, response.value.amount, true);
       let inRange = true;
 
-      if (!this.maxPoolSize?.isZero()) {
-        inRange = poolSize.raw.lte(this.maxPoolSize.raw);
+      // if (!this.maxPoolSize?.isZero()) {
+      //   inRange = poolSize.raw.lte(this.maxPoolSize.raw);
 
-        if (!inRange) {
-          return { ok: false, message: `PoolSize -> Pool size ${poolSize.toFixed()} > ${this.maxPoolSize.toFixed()}` };
-        }
-      }
+      //   if (!inRange) {
+      //     return { ok: false, message: `PoolSize -> Pool size ${poolSize.toFixed()} > ${this.maxPoolSize.toFixed()}` };
+      //   }
+      // }
 
       if (!this.minPoolSize?.isZero()) {
         inRange = poolSize.raw.gte(this.minPoolSize.raw);
