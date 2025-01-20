@@ -50,36 +50,36 @@ export class Listeners extends EventEmitter {
     );
   }
 
-  // private async subscribeToRaydiumPools(config: { quoteToken: Token }) {
-  //   return this.connection.onProgramAccountChange(
-  //     MAINNET_PROGRAM_ID.AmmV4,
-  //     async (updatedAccountInfo) => {
-  //       this.emit('pool', updatedAccountInfo);
-  //     },
-  //     this.connection.commitment,
-  //     [
-  //       { dataSize: LIQUIDITY_STATE_LAYOUT_V4.span },
-  //       {
-  //         memcmp: {
-  //           offset: LIQUIDITY_STATE_LAYOUT_V4.offsetOf('quoteMint'),
-  //           bytes: config.quoteToken.mint.toBase58(),
-  //         },
-  //       },
-  //       {
-  //         memcmp: {
-  //           offset: LIQUIDITY_STATE_LAYOUT_V4.offsetOf('marketProgramId'),
-  //           bytes: MAINNET_PROGRAM_ID.OPENBOOK_MARKET.toBase58(),
-  //         },
-  //       },
-  //       {
-  //         memcmp: {
-  //           offset: LIQUIDITY_STATE_LAYOUT_V4.offsetOf('status'),
-  //           bytes: bs58.encode([6, 0, 0, 0, 0, 0, 0, 0]),
-  //         },
-  //       },
-  //     ],
-  //   );
-  // }
+  private async subscribeToRaydiumPools(config: { quoteToken: Token }) {
+    return this.connection.onProgramAccountChange(
+      MAINNET_PROGRAM_ID.AmmV4,
+      async (updatedAccountInfo) => {
+        this.emit('pool', updatedAccountInfo);
+      },
+      this.connection.commitment,
+      [
+        { dataSize: LIQUIDITY_STATE_LAYOUT_V4.span },
+        {
+          memcmp: {
+            offset: LIQUIDITY_STATE_LAYOUT_V4.offsetOf('quoteMint'),
+            bytes: config.quoteToken.mint.toBase58(),
+          },
+        },
+        {
+          memcmp: {
+            offset: LIQUIDITY_STATE_LAYOUT_V4.offsetOf('marketProgramId'),
+            bytes: MAINNET_PROGRAM_ID.OPENBOOK_MARKET.toBase58(),
+          },
+        },
+        {
+          memcmp: {
+            offset: LIQUIDITY_STATE_LAYOUT_V4.offsetOf('status'),
+            bytes: bs58.encode([6, 0, 0, 0, 0, 0, 0, 0]),
+          },
+        },
+      ],
+    );
+  }
 
   private async subscribeToWalletChanges(config: { walletPublicKey: PublicKey }) {
     return this.connection.onProgramAccountChange(
