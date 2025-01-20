@@ -16,11 +16,11 @@ export interface FilterResult {
   message?: string;
 }
 
-export interface PoolFilterArgs {
-  minPoolSize: TokenAmount;
-  maxPoolSize: TokenAmount;
-  quoteToken: Token;
-}
+// export interface PoolFilterArgs {
+//   minPoolSize: TokenAmount;
+//   maxPoolSize: TokenAmount;
+//   quoteToken: Token;
+// }
 
 export class PoolFilters {
   private readonly filters: Filter[] = [];

@@ -35,10 +35,10 @@ export class JitoTransactionExecutor implements TransactionExecutor {
     this.JitoFeeWallet = this.getRandomValidatorKey();
   }
 
-  private getRandomValidatorKey(): PublicKey {
-    const randomValidator = this.jitpTipAccounts[Math.floor(Math.random() * this.jitpTipAccounts.length)];
-    return new PublicKey(randomValidator);
-  }
+  // private getRandomValidatorKey(): PublicKey {
+  //   const randomValidator = this.jitpTipAccounts[Math.floor(Math.random() * this.jitpTipAccounts.length)];
+  //   return new PublicKey(randomValidator);
+  // }
 
   public async executeAndConfirm(
     transaction: VersionedTransaction,
