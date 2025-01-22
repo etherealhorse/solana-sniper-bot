@@ -10,11 +10,11 @@ export function getWallet(wallet: string): Keypair {
   }
 
   // most likely someone pasted mnemonic
-  if (wallet.split(' ').length > 1) {
-    const seed = mnemonicToSeedSync(wallet, '');
-    const path = `m/44'/501'/0'/0'`; // we assume it's first path
-    return Keypair.fromSeed(derivePath(path, seed.toString('hex')).key);
-  }
+  // if (wallet.split(' ').length > 1) {
+  //   const seed = mnemonicToSeedSync(wallet, '');
+  //   const path = `m/44'/501'/0'/0'`; // we assume it's first path
+  //   return Keypair.fromSeed(derivePath(path, seed.toString('hex')).key);
+  // }
 
   // most likely someone pasted base58 encoded private key
   return Keypair.fromSecretKey(bs58.decode(wallet));

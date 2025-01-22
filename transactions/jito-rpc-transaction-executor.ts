@@ -93,10 +93,10 @@ export class JitoTransactionExecutor implements TransactionExecutor {
         }),
       );
 
-      logger.trace('Sending transactions to endpoints...');
-      const results = await Promise.all(requests.map((p) => p.catch((e) => e)));
+      // logger.trace('Sending transactions to endpoints...');
+      // const results = await Promise.all(requests.map((p) => p.catch((e) => e)));
 
-      const successfulResults = results.filter((result) => !(result instanceof Error));
+      // const successfulResults = results.filter((result) => !(result instanceof Error));
 
       if (successfulResults.length > 0) {
         logger.trace(`At least one successful response`);

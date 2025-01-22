@@ -81,26 +81,26 @@ export class Listeners extends EventEmitter {
     );
   }
 
-  private async subscribeToWalletChanges(config: { walletPublicKey: PublicKey }) {
-    return this.connection.onProgramAccountChange(
-      TOKEN_PROGRAM_ID,
-      async (updatedAccountInfo) => {
-        this.emit('wallet', updatedAccountInfo);
-      },
-      this.connection.commitment,
-      [
-        {
-          dataSize: 165,
-        },
-        {
-          memcmp: {
-            offset: 32,
-            bytes: config.walletPublicKey.toBase58(),
-          },
-        },
-      ],
-    );
-  }
+  // private async subscribeToWalletChanges(config: { walletPublicKey: PublicKey }) {
+  //   return this.connection.onProgramAccountChange(
+  //     TOKEN_PROGRAM_ID,
+  //     async (updatedAccountInfo) => {
+  //       this.emit('wallet', updatedAccountInfo);
+  //     },
+  //     this.connection.commitment,
+  //     [
+  //       {
+  //         dataSize: 165,
+  //       },
+  //       {
+  //         memcmp: {
+  //           offset: 32,
+  //           bytes: config.walletPublicKey.toBase58(),
+  //         },
+  //       },
+  //     ],
+  //   );
+  // }
 
   public async stop() {
     for (let i = this.subscriptions.length; i >= 0; --i) {
