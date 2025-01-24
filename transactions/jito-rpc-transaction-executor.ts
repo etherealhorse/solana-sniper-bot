@@ -98,13 +98,13 @@ export class JitoTransactionExecutor implements TransactionExecutor {
 
       // const successfulResults = results.filter((result) => !(result instanceof Error));
 
-      if (successfulResults.length > 0) {
-        logger.trace(`At least one successful response`);
-        logger.debug(`Confirming jito transaction...`);
-        return await this.confirm(jitoTxsignature, latestBlockhash);
-      } else {
-        logger.debug(`No successful responses received for jito`);
-      }
+      // if (successfulResults.length > 0) {
+      //   logger.trace(`At least one successful response`);
+      //   logger.debug(`Confirming jito transaction...`);
+      //   return await this.confirm(jitoTxsignature, latestBlockhash);
+      // } else {
+      //   logger.debug(`No successful responses received for jito`);
+      // }
 
       return { confirmed: false };
     } catch (error) {
