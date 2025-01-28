@@ -106,26 +106,26 @@ export class JitoTransactionExecutor implements TransactionExecutor {
   //     //   logger.debug(`No successful responses received for jito`);
   //     // }
 `
-      return { confirmed: false };
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        logger.trace({ error: error.response?.data }, 'Failed to execute jito transaction');
-      }
-      logger.error('Error during transaction execution', error);
-      return { confirmed: false };
-    }
-  }
+//       return { confirmed: false };
+//     } catch (error) {
+//       if (error instanceof AxiosError) {
+//         logger.trace({ error: error.response?.data }, 'Failed to execute jito transaction');
+//       }
+//       logger.error('Error during transaction execution', error);
+//       return { confirmed: false };
+//     }
+//   }
 
-  private async confirm(signature: string, latestBlockhash: BlockhashWithExpiryBlockHeight) {
-    const confirmation = await this.connection.confirmTransaction(
-      {
-        signature,
-        lastValidBlockHeight: latestBlockhash.lastValidBlockHeight,
-        blockhash: latestBlockhash.blockhash,
-      },
-      this.connection.commitment,
-    );
+//   private async confirm(signature: string, latestBlockhash: BlockhashWithExpiryBlockHeight) {
+//     const confirmation = await this.connection.confirmTransaction(
+//       {
+//         signature,
+//         lastValidBlockHeight: latestBlockhash.lastValidBlockHeight,
+//         blockhash: latestBlockhash.blockhash,
+//       },
+//       this.connection.commitment,
+//     );
 
-    return { confirmed: !confirmation.value.err, signature };
-  }
-}
+//     return { confirmed: !confirmation.value.err, signature };
+//   }
+// }

@@ -31,24 +31,24 @@ export class Listeners extends EventEmitter {
     }
   }
 
-  private async subscribeToOpenBookMarkets(config: { quoteToken: Token }) {
-    return this.connection.onProgramAccountChange(
-      MAINNET_PROGRAM_ID.OPENBOOK_MARKET,
-      async (updatedAccountInfo) => {
-        this.emit('market', updatedAccountInfo);
-      },
-      this.connection.commitment,
-      [
-        { dataSize: MARKET_STATE_LAYOUT_V3.span },
-        {
-          memcmp: {
-            offset: MARKET_STATE_LAYOUT_V3.offsetOf('quoteMint'),
-            bytes: config.quoteToken.mint.toBase58(),
-          },
-        },
-      ],
-    );
-  }
+  // private async subscribeToOpenBookMarkets(config: { quoteToken: Token }) {
+  //   return this.connection.onProgramAccountChange(
+  //     MAINNET_PROGRAM_ID.OPENBOOK_MARKET,
+  //     async (updatedAccountInfo) => {
+  //       this.emit('market', updatedAccountInfo);
+  //     },
+  //     this.connection.commitment,
+  //     [
+  //       { dataSize: MARKET_STATE_LAYOUT_V3.span },
+  //       {
+  //         memcmp: {
+  //           offset: MARKET_STATE_LAYOUT_V3.offsetOf('quoteMint'),
+  //           bytes: config.quoteToken.mint.toBase58(),
+  //         },
+  //       },
+  //     ],
+  //   );
+  // }
 
   private async subscribeToRaydiumPools(config: { quoteToken: Token }) {
     return this.connection.onProgramAccountChange(
