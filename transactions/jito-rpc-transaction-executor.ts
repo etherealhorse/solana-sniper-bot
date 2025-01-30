@@ -75,23 +75,23 @@ export class JitoTransactionExecutor implements TransactionExecutor {
       const serializedTransaction = bs58.encode(transaction.serialize());
       const serializedTransactions = [serializedjitoFeeTx, serializedTransaction];
 
-      // https://jito-labs.gitbook.io/mev/searcher-resources/json-rpc-api-reference/url
-      const endpoints = [
-        'https://mainnet.block-engine.jito.wtf/api/v1/bundles',
-        'https://amsterdam.mainnet.block-engine.jito.wtf/api/v1/bundles',
-        'https://frankfurt.mainnet.block-engine.jito.wtf/api/v1/bundles',
-        'https://ny.mainnet.block-engine.jito.wtf/api/v1/bundles',
-        'https://tokyo.mainnet.block-engine.jito.wtf/api/v1/bundles',
-      ];
+      // // https://jito-labs.gitbook.io/mev/searcher-resources/json-rpc-api-reference/url
+      // const endpoints = [
+      //   'https://mainnet.block-engine.jito.wtf/api/v1/bundles',
+      //   'https://amsterdam.mainnet.block-engine.jito.wtf/api/v1/bundles',
+      //   'https://frankfurt.mainnet.block-engine.jito.wtf/api/v1/bundles',
+      //   'https://ny.mainnet.block-engine.jito.wtf/api/v1/bundles',
+      //   'https://tokyo.mainnet.block-engine.jito.wtf/api/v1/bundles',
+      // ];
 
-      const requests = endpoints.map((url) =>
-        axios.post(url, {
-          jsonrpc: '2.0',
-          id: 1,
-          method: 'sendBundle',
-          params: [serializedTransactions],
-        }),
-      );
+      // const requests = endpoints.map((url) =>
+      //   axios.post(url, {
+      //     jsonrpc: '2.0',
+      //     id: 1,
+      //     method: 'sendBundle',
+      //     params: [serializedTransactions],
+      //   }),
+      // );
 
       // logger.trace('Sending transactions to endpoints...');
       // const results = await Promise.all(requests.map((p) => p.catch((e) => e)));

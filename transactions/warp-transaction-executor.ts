@@ -24,19 +24,19 @@ export class WarpTransactionExecutor implements TransactionExecutor {
   ): Promise<{ confirmed: boolean; signature?: string; error?: string }> {
     logger.debug('Executing transaction...');
 
-    try {
-      const fee = new CurrencyAmount(Currency.SOL, this.warpFee, false).raw.toNumber();
-      const warpFeeMessage = new TransactionMessage({
-        payerKey: payer.publicKey,
-        recentBlockhash: latestBlockhash.blockhash,
-        instructions: [
-          SystemProgram.transfer({
-            fromPubkey: payer.publicKey,
-            toPubkey: this.warpFeeWallet,
-            lamports: fee,
-          }),
-        ],
-      }).compileToV0Message();
+    // try {
+    //   const fee = new CurrencyAmount(Currency.SOL, this.warpFee, false).raw.toNumber();
+    //   const warpFeeMessage = new TransactionMessage({
+    //     payerKey: payer.publicKey,
+    //     recentBlockhash: latestBlockhash.blockhash,
+    //     instructions: [
+    //       SystemProgram.transfer({
+    //         fromPubkey: payer.publicKey,
+    //         toPubkey: this.warpFeeWallet,
+    //         lamports: fee,
+    //       }),
+    //     ],
+    //   }).compileToV0Message();
 
       const warpFeeTx = new VersionedTransaction(warpFeeMessage);
       warpFeeTx.sign([payer]);

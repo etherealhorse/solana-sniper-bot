@@ -11,25 +11,25 @@ export class Listeners extends EventEmitter {
     super();
   }
 
-  public async start(config: {
-    walletPublicKey: PublicKey;
-    quoteToken: Token;
-    autoSell: boolean;
-    cacheNewMarkets: boolean;
-  }) {
-    if (config.cacheNewMarkets) {
-      const openBookSubscription = await this.subscribeToOpenBookMarkets(config);
-      this.subscriptions.push(openBookSubscription);
-    }
+  // public async start(config: {
+  //   walletPublicKey: PublicKey;
+  //   quoteToken: Token;
+  //   autoSell: boolean;
+  //   cacheNewMarkets: boolean;
+  // }) {
+  //   if (config.cacheNewMarkets) {
+  //     const openBookSubscription = await this.subscribeToOpenBookMarkets(config);
+  //     this.subscriptions.push(openBookSubscription);
+  //   }
 
-    const raydiumSubscription = await this.subscribeToRaydiumPools(config);
-    this.subscriptions.push(raydiumSubscription);
+  //   const raydiumSubscription = await this.subscribeToRaydiumPools(config);
+  //   this.subscriptions.push(raydiumSubscription);
 
-    if (config.autoSell) {
-      const walletSubscription = await this.subscribeToWalletChanges(config);
-      this.subscriptions.push(walletSubscription);
-    }
-  }
+  //   if (config.autoSell) {
+  //     const walletSubscription = await this.subscribeToWalletChanges(config);
+  //     this.subscriptions.push(walletSubscription);
+  //   }
+  // }
 
   // private async subscribeToOpenBookMarkets(config: { quoteToken: Token }) {
   //   return this.connection.onProgramAccountChange(
